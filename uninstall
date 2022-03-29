@@ -1,0 +1,1 @@
+dotnet tool uninstall Kent.Cli.Ebs --global
