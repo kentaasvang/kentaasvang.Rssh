@@ -1,1 +1,1 @@
-dotnet tool uninstall Kent.Cli.Ebs --global
+dotnet tool uninstall Kent.Cli.Rssh --global

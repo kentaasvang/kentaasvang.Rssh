@@ -1,4 +1,5 @@
 ﻿using System.CommandLine;
+using System.Threading.Tasks;
 using Kent.Cli.Rssh.Extensions;
 
 namespace Kent.Cli.Rssh;
