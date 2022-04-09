@@ -1,3 +1,4 @@
+using System;
 using System.CommandLine;
 using Kent.Cli.Rssh.Interfaces;
 
