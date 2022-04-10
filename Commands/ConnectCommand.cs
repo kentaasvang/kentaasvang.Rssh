@@ -6,7 +6,7 @@ namespace Kent.Cli.Rssh.Commands;
 
 internal class ConnectCommand : ICommandInstaller
 {
-    public Command Instantiate()
+    public Command LoadCommand()
     {
         Command command = new("connect");
 
