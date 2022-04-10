@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.CommandLine;
 using System.CommandLine.Builder;
 using System.CommandLine.Invocation;
+using Kent.Cli.Rssh.Data;
 using Kent.Cli.Rssh.Interfaces;
+using Kent.Cli.Rssh.Models;
 
 namespace Kent.Cli.Rssh.Commands;
 
 internal class AddCommand : ICommandInstaller
 {
+    internal readonly DatabaseContext _database = new();
     public Command LoadCommand()
     {
         // adding new groups or servers
@@ -36,14 +39,34 @@ internal class AddCommand : ICommandInstaller
 
         command.SetHandler((string name, string? group) => 
         {
-            if (group is not null)
+            if (group is null)
             {
-                Console.WriteLine($"value of name: {name}");
-                Console.WriteLine($"value of group: {group}");
+                Guid guid = new();
+                
+                Console.Write("Give ip: ");
+                string? ip = Console.ReadLine();
+                
+                Console.Write("Give username: ");
+                string? username = Console.ReadLine();
+                
+                Console.Write("Give password: ");
+                string? password = Console.ReadLine();
+
+                ConnectionDetail cd = new(
+                    guid, 
+                    name, 
+                    ip, 
+                    username, 
+                    password, 
+                    null
+                );
+
+                _database.Add(cd);
+                _database.SaveChanges();
             }
             else
             {
-                Console.WriteLine($"value of name: {name}");
+                throw new NotImplementedException();
             }
         }, nameArg, groupName);
 
