@@ -3,7 +3,7 @@
 ## ❓ What is My Project?
 Got sick and tired of looking up login credentials for a few dozen ubuntu servers so I created this CLI to get a common interface to all of them.
 
-## ⚡ Getting Started
+## ⚡ Doc's
 
 **Install**
 dotnet pack
@@ -15,6 +15,10 @@ dotnet tool update Kent.Cli.Rssh --global --add-source bin/Debug
 
 **Delete**
 dotnet tool uninstall Kent.Cli.Rssh --global
+
+**Migrate and update database**
+dotnet ef migrations add <migration name>
+dotnet ef database update
 
 
 ### 🔨 API
