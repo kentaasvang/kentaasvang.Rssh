@@ -14,7 +14,7 @@ internal static class Extensions
         foreach (var command in commands)
         {
             if (command is null) continue;
-            rootCommand.Add(command.Instantiate());
+            rootCommand.Add(command.LoadCommand());
         }
     }
 
