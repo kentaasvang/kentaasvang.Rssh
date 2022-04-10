@@ -4,8 +4,9 @@ namespace Kent.Cli.Rssh.Models;
 
 internal record ConnectionDetail(
     Guid ConnectionDetailId,
+    string? ConnectionName,
     string? Ip,
-    string? Password,
     string? Username,
-    Guid GroupId
+    string? Password,
+    Guid? GroupId
 );

@@ -3,6 +3,7 @@ using System;
 using Kent.Cli.Rssh.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kent.Cli.Rssh.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220410154527_GroupId on connectiondetails must be nullable")]
+    partial class GroupIdonconnectiondetailsmustbenullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.3");
@@ -21,9 +23,6 @@ namespace Kent.Cli.Rssh.Migrations
                 {
                     b.Property<Guid>("ConnectionDetailId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ConnectionName")
                         .HasColumnType("TEXT");
 
                     b.Property<Guid?>("GroupId")
