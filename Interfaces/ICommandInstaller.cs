@@ -1,6 +1,6 @@
 using System.CommandLine;
 
-namespace Kent.Cli.Rssh.Interfaces;
+namespace kentaasvang.Rssh.Interfaces;
 
 internal interface ICommandInstaller
 {

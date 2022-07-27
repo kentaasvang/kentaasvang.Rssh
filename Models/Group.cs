@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Kent.Cli.Rssh.Models;
+namespace kentaasvang.Rssh.Models;
 
 internal class Group
 {

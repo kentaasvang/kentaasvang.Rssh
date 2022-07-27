@@ -1,15 +1,16 @@
 using System;
+using System.Collections.Generic;
 using System.CommandLine;
 using System.Linq;
-using Kent.Cli.Rssh.Interfaces;
+using kentaasvang.Rssh.Interfaces;
 
-namespace Kent.Cli.Rssh.Extensions;
+namespace kentaasvang.Rssh.Extensions;
 
 internal static class Extensions
 {
     internal static void ConfigureCommands(this RootCommand rootCommand)
     {
-        ICommandInstaller?[] commands = GetCommands();
+        IEnumerable<ICommandInstaller?> commands = GetCommands();
 
         foreach (var command in commands)
         {
@@ -18,7 +19,7 @@ internal static class Extensions
         }
     }
 
-    private static ICommandInstaller?[] GetCommands()
+    private static IEnumerable<ICommandInstaller?> GetCommands()
     {
         return AppDomain.CurrentDomain.GetAssemblies()
             .SelectMany(asm => asm.GetTypes())

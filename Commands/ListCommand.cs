@@ -1,11 +1,11 @@
 using System;
 using System.CommandLine;
 using System.Linq;
-using Kent.Cli.Rssh.Data;
-using Kent.Cli.Rssh.Interfaces;
-using Kent.Cli.Rssh.Models;
+using kentaasvang.Rssh.Data;
+using kentaasvang.Rssh.Interfaces;
+using kentaasvang.Rssh.Models;
 
-namespace Kent.Cli.Rssh.Commands;
+namespace kentaasvang.Rssh.Commands;
 
 public class ListCommand : ICommandInstaller
 {

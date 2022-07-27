@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Kent.Cli.Rssh.Migrations
+namespace kentaasvang.Rssh.Migrations
 {
     public partial class DisplayNameColumnForConnectionDetails : Migration
     {

@@ -1,8 +1,9 @@
 using System;
-using Kent.Cli.Rssh.Models;
+using System.IO;
+using kentaasvang.Rssh.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Kent.Cli.Rssh.Data;
+namespace kentaasvang.Rssh.Data;
 
 internal class DatabaseContext : DbContext
 {
@@ -14,7 +15,7 @@ internal class DatabaseContext : DbContext
     {
         var folder = Environment.SpecialFolder.LocalApplicationData;
         string path = Environment.GetFolderPath(folder);
-        DbPath = System.IO.Path.Join(path, "blogging.db");    
+        DbPath = Path.Join(path, "blogging.db");    
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)

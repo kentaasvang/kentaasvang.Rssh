@@ -59,5 +59,5 @@ rssh list --group <groupname>
 ```
 
 ## 🤝 Collaborate with My Project
-Sure. Go ahead. submit PR's like there's no tomorrow. Filing issues to tell me I'm an idiot is allowed but not encouraged.
+Sure. Go ahead. submit PR's like there's no tomorrow.
 

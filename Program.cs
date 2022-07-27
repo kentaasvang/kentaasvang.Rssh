@@ -1,9 +1,9 @@
 ﻿using System;
 using System.CommandLine;
 using System.Threading.Tasks;
-using Kent.Cli.Rssh.Extensions;
+using kentaasvang.Rssh.Extensions;
 
-namespace Kent.Cli.Rssh;
+namespace kentaasvang.Rssh;
 
 internal class Program
 {

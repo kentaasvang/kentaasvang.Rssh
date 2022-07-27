@@ -1,8 +1,8 @@
 using System;
 using System.CommandLine;
-using Kent.Cli.Rssh.Interfaces;
+using kentaasvang.Rssh.Interfaces;
 
-namespace Kent.Cli.Rssh.Commands;
+namespace kentaasvang.Rssh.Commands;
 
 internal class ConnectCommand : ICommandInstaller
 {

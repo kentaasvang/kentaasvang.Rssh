@@ -1,2 +1,2 @@
 dotnet pack
-dotnet tool update Kent.Cli.Rssh --global --add-source bin/Debug
+dotnet tool update kentaasvang.Rssh --global --add-source bin/Debug

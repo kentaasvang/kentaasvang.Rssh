@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.CommandLine;
 using System.CommandLine.Builder;
 using System.CommandLine.Invocation;
-using Kent.Cli.Rssh.Data;
-using Kent.Cli.Rssh.Interfaces;
-using Kent.Cli.Rssh.Models;
+using kentaasvang.Rssh.Data;
+using kentaasvang.Rssh.Interfaces;
+using kentaasvang.Rssh.Models;
 
-namespace Kent.Cli.Rssh.Commands;
+namespace kentaasvang.Rssh.Commands;
 
 internal class AddCommand : ICommandInstaller
 {
-    internal readonly DatabaseContext _database = new();
+    private readonly DatabaseContext _database = new();
     public Command LoadCommand()
     {
         // adding new groups or servers
@@ -31,6 +31,7 @@ internal class AddCommand : ICommandInstaller
             IsRequired = false,
             Arity = default,
         };
+        
         groupName.AddAlias("-g");
         command.AddOption(groupName);
             

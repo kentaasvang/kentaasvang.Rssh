@@ -1,6 +1,6 @@
 using System;
 
-namespace Kent.Cli.Rssh.Models;
+namespace kentaasvang.Rssh.Models;
 
 internal record ConnectionDetail(
     Guid ConnectionDetailId,

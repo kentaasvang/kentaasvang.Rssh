@@ -1,1 +1,1 @@
-dotnet tool uninstall Kent.Cli.Rssh --global
+dotnet tool uninstall kentaasvang.Rssh --global

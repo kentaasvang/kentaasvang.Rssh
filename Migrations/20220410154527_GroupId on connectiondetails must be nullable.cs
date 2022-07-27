@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Kent.Cli.Rssh.Migrations
+namespace kentaasvang.Rssh.Migrations
 {
     public partial class GroupIdonconnectiondetailsmustbenullable : Migration
     {
