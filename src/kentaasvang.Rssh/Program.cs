@@ -1,14 +1,15 @@
-﻿using System;
+﻿
+namespace kentaasvang.Rssh;
+
 using System.CommandLine;
 using System.Threading.Tasks;
 using kentaasvang.Rssh.Extensions;
-
-namespace kentaasvang.Rssh;
 
 internal class Program
 {
     internal static async Task<int> Main(string[] args)
     {
+        
         // TODO: extract configuration
         // rssh <group> <server>
         // rssh <server>
