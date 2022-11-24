@@ -28,7 +28,7 @@ internal class RemoveCommand : ICommandInstaller
         {
              var cd = _database
                  .ConnectionDetails
-                 .First(cd => cd.ConnectionName == name);
+                 .First(cd => cd.Name == name);
             
              _database.Remove(cd);
              Console.WriteLine($"Deleting cd with name: {name}");

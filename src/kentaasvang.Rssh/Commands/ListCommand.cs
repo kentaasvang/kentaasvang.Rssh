@@ -35,7 +35,7 @@ public class ListCommand : ICommandInstaller
             {
                 // TODO: for display purposes, should only show displayname
                 string output = $"Connection username: {connection.Username}\n";
-                output += $"Connection displayName: {connection.ConnectionName}\n";
+                output += $"Connection displayName: {connection.Name}\n";
                 output += $"Connection ip: {connection.Ip}\n";
                 output += $"Connection password: {connection.Password}";
                 
