@@ -1,27 +1,24 @@
-﻿
-namespace kentaasvang.Rssh;
+﻿namespace kentaasvang.Rssh;
 
-using System.CommandLine;
 using System.Threading.Tasks;
-using kentaasvang.Rssh.Extensions;
+using kentaasvang.Rssh.Implementations;
+using kentaasvang.Rssh.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
+using kentaasvang.Rssh.Data;
 
 internal class Program
 {
-    internal static async Task<int> Main(string[] args)
+    internal static async Task Main(string[] args)
     {
-        
-        RootCommand rootCommand = new()
-        {
-            Description = "store ssh credentials for clients",
-            Name = "rssh"
-        };
+        var serviceProvider = new ServiceCollection()
+            .AddTransient<IInputProvider, InputProvider>()
+            .AddTransient<IAddHandler, AddHandler>()
+            .AddDbContext<DatabaseContext>()
+            .AddTransient<Rssh>()
+            .BuildServiceProvider();
 
-        rootCommand.ConfigureCommands();
-        
-        await rootCommand.InvokeAsync(args);
-
-        return 0;
+        var app = serviceProvider.GetRequiredService<Rssh>();
+        await app.Run(args);
     }
-
 }
 

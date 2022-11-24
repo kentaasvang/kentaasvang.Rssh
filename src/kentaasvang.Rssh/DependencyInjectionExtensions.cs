@@ -4,9 +4,9 @@ using System.CommandLine;
 using System.Linq;
 using kentaasvang.Rssh.Interfaces;
 
-namespace kentaasvang.Rssh.Extensions;
+namespace kentaasvang.Rssh;
 
-internal static class Extensions
+internal static class DependencyInjectionExtensions
 {
     internal static void ConfigureCommands(this RootCommand rootCommand)
     {
