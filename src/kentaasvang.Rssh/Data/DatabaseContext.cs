@@ -14,7 +14,7 @@ public class DatabaseContext : DbContext
     {
         var folder = Environment.SpecialFolder.LocalApplicationData;
         string path = Environment.GetFolderPath(folder);
-        DbPath = Path.Join(path, "blogging.db");    
+        DbPath = Path.Join(path, "rssh.db");    
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
