@@ -5,11 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace kentaasvang.Rssh.Data;
 
-internal class DatabaseContext : DbContext
+public class DatabaseContext : DbContext
 {
-    internal DbSet<ConnectionDetail> ConnectionDetails { get; set; } = null!;
-    internal DbSet<Group> Groups { get; set; } = null!;
     private string DbPath { get; set; }
+    internal DbSet<ConnectionDetail> ConnectionDetails => Set<ConnectionDetail>();
 
     public DatabaseContext()
     {
