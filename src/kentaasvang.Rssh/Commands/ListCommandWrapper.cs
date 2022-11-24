@@ -7,22 +7,12 @@ using kentaasvang.Rssh.Models;
 
 namespace kentaasvang.Rssh.Commands;
 
-public class ListCommand : ICommandInstaller
+public class ListCommandWrapper : ICommandWrapper
 {
     private readonly DatabaseContext _database = new DatabaseContext();
     
-    public Command LoadCommand()
+    public Command UnWrap()
     {
-        // list out groups and servers
-        //  >>> rssh list
-        //  Groups:
-        //      Ebs
-        //          stage
-        //          develop
-        //          prod
-        //      Home
-        //          main
-        //          raspberry  
         Command command = new("list");
         command.AddAlias("l");
         command.Description = "Show connections";
