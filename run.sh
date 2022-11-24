@@ -1,2 +1,3 @@
 #!/bin/bash
-dotnet run --project src/kentaasvang.Rssh -- $1
+cd src/kentaasvang.Rssh
+dotnet run -- $1

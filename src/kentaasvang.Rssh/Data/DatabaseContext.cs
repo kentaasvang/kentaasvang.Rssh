@@ -12,9 +12,13 @@ public class DatabaseContext : DbContext
 
     public DatabaseContext()
     {
+#if DEBUG
+        DbPath = Path.Join(Environment.CurrentDirectory, "test_db.db");
+#else
         var folder = Environment.SpecialFolder.LocalApplicationData;
         string path = Environment.GetFolderPath(folder);
         DbPath = Path.Join(path, "rssh.db");    
+#endif
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)

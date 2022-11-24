@@ -1,6 +1,5 @@
 namespace kentaasvang.Rssh.UnitTests;
 
-using Moq;
 using kentaasvang.Rssh.Commands;
 using kentaasvang.Rssh.Data;
 using kentaasvang.Rssh.Models;
