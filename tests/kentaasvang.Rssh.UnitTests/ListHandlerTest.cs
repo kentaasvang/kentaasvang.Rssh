@@ -3,30 +3,52 @@ namespace kentaasvang.Rssh.UnitTests;
 using kentaasvang.Rssh.Implementations;
 using kentaasvang.Rssh.Entities;
 using kentaasvang.Rssh.Repositories;
+using kentaasvang.Rssh.Interfaces;
 
 public class ListHandlerTest
 {
+  public readonly Mock<IConnectionDetailRepository> _repoMock;
+  public readonly IListHandler _sut;
+
+  public ListHandlerTest()
+  {
+    _repoMock = new Mock<IConnectionDetailRepository>();
+    _sut = new ListHandler(_repoMock.Object);
+  }
+
   [Fact]
-  public void ShouldListAllConnections()
+  public void ListCommand_ShouldCallRepoGetAll()
+  {
+    // Arrange
+    _repoMock
+      .Setup(r => r.GetAll())
+      .Returns(new RepositoryResult<List<ConnectionDetailEntity>>());
+
+    // Act
+    _sut.ListAllConnections();
+
+    // Assert
+    _repoMock.Verify(repo => repo.GetAll(), Times.Once);
+
+  }
+
+  [Fact]
+  public void ListCommand_ShouldOutputAllConnectionNames()
   {
     // Arrange
     var fakeOutput = new FakeOutput();
-
-    var repo = new Mock<IConnectionDetailRepository>();
-    ListHandler handler = new(repo.Object);
-
     var returnList = BuildReturnList();
-
-    repo.Setup(r => r.GetAll()).Returns(new RepositoryResult<List<ConnectionDetailEntity>>(){ Succeeded = true, Value = returnList});
+    _repoMock
+      .Setup(r => r.GetAll())
+      .Returns(new RepositoryResult<List<ConnectionDetailEntity>>() { Succeeded = true, Value = returnList});
 
     // Act
-    handler.ListAllConnections();
+    _sut.ListAllConnections();
 
     // Assert
-    repo.Verify(repo => repo.GetAll(), Times.Once);
-
     foreach(var entity in returnList)
       Assert.Contains(entity.Name, FakeOutput.Output.ToString());
+
   }
 
   private static List<ConnectionDetailEntity> BuildReturnList()
