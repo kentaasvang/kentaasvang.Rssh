@@ -2,8 +2,7 @@ namespace kentaasvang.Rssh.Implementations;
 
 using System;
 using kentaasvang.Rssh.Interfaces;
-using kentaasvang.Rssh.Data;
-using kentaasvang.Rssh.Models;
+using kentaasvang.Rssh.Entities;
 using kentaasvang.Rssh.Repositories;
 
 public class AddHandler : IAddHandler

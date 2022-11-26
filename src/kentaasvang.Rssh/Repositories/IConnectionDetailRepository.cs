@@ -1,6 +1,6 @@
 namespace kentaasvang.Rssh.Repositories;
 
-using kentaasvang.Rssh.Models;
+using kentaasvang.Rssh.Entities;
 using System.Collections.Generic;
 
 public interface IConnectionDetailRepository

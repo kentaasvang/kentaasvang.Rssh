@@ -1,6 +1,6 @@
 using System;
 using System.IO;
-using kentaasvang.Rssh.Models;
+using kentaasvang.Rssh.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace kentaasvang.Rssh.Data;

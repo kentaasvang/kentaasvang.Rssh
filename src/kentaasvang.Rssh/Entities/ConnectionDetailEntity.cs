@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace kentaasvang.Rssh.Models;
+namespace kentaasvang.Rssh.Entities;
 
 [Table("connection_detail")]
 public class ConnectionDetailEntity

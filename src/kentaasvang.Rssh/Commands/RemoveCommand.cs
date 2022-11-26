@@ -1,10 +1,6 @@
-using System;
 using System.CommandLine;
-using System.Linq;
-using kentaasvang.Rssh.Models;
 using kentaasvang.Rssh.Data;
 using kentaasvang.Rssh.Interfaces;
-using kentaasvang.Rssh.Repositories;
 
 namespace kentaasvang.Rssh.Commands;
 

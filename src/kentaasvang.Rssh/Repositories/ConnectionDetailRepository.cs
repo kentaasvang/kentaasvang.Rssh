@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using kentaasvang.Rssh.Models;
+using kentaasvang.Rssh.Entities;
 
 namespace kentaasvang.Rssh.Repositories;
 
