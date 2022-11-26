@@ -47,8 +47,6 @@ public class AddHandlerTest
       handler.InsertNewConnection(newConnectionName);
 
       // Assert
-      // TODO: assert dbContext is called with correct data
-      // TODO: use Faker to provide dynamic data for inputProvider
       connectionDetailRepoMock
         .Verify(repo => repo.Insert(It.IsAny<ConnectionDetailEntity>()), Times.Once);
 
@@ -56,6 +54,5 @@ public class AddHandlerTest
         Assert.Contains($"Successfully inserted new connection: {newConnectionName}", stringWriter.ToString());
       else
         Assert.Contains("Something wen't wrong", stringWriter.ToString());
-
     }
 }
