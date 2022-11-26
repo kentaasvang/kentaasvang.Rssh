@@ -14,9 +14,8 @@ public class AddHandlerTest
     public void AddHandlerInsertNewConnection_ShouldCallRepoInsert(bool succeeded)
     {
       // Arrange
+      var fakeOutput = new FakeOutput();
       var newConnectionName = "testName";
-      var stringWriter = new StringWriter();
-      Console.SetOut(stringWriter);
 
       var connectionDetailRepoMock = new Mock<IConnectionDetailRepository>();
       var inputProvider = new Mock<IInputProvider>(); 
@@ -51,8 +50,8 @@ public class AddHandlerTest
         .Verify(repo => repo.Insert(It.IsAny<ConnectionDetailEntity>()), Times.Once);
 
       if (succeeded)
-        Assert.Contains($"Successfully inserted new connection: {newConnectionName}", stringWriter.ToString());
+        Assert.Contains($"Successfully inserted new connection: {newConnectionName}", FakeOutput.Output.ToString());
       else
-        Assert.Contains("Something wen't wrong", stringWriter.ToString());
+        Assert.Contains("Something wen't wrong", FakeOutput.Output.ToString());
     }
 }
