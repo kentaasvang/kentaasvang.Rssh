@@ -13,15 +13,14 @@ internal class Program
     {
         var services = new ServiceCollection();
 
-        var serviceProvider = services
-            .AddTransient<IInputProvider, InputProvider>()
-            .AddTransient<IAddHandler, AddHandler>()
-            .AddTransient<IListHandler, ListHandler>()
-            .AddDbContext<RsshDbContext>()
-            .AddTransient<AddCommandWrapper>()
-            .AddTransient<ListCommandWrapper>()
-            .AddTransient<Rssh>()
-            .BuildServiceProvider();
+        services.AddHandlers();
+        services.AddRepos();
+        services.AddDatabase();
+        services.AddCommands();
+        services.AddTransient<IInputProvider, InputProvider>();
+        services.AddTransient<Rssh>();
+
+        var serviceProvider = services.BuildServiceProvider();
 
         var app = serviceProvider.GetRequiredService<Rssh>();
 
