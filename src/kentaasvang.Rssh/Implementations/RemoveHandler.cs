@@ -17,9 +17,9 @@ public class RemoveHandler : IRemoveHandler
     {
         var result = _repo.Delete(name);
 
-        if (!result.Succeeded)
-            Console.WriteLine($"Failed to remove connection: {name}");
-        else
+        if (result.Succeeded)
             Console.WriteLine($"Successfully removed connection: {name}");
+        else
+            Console.WriteLine($"Failed to remove connection: {name} with error: {result.ErrorMessage}");
     }
 }

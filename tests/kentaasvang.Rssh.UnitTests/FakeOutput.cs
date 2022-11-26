@@ -8,7 +8,6 @@ public class FakeOutput
 
   public FakeOutput()
   {
-    Clear();
     Console.SetOut(Output);
   }
 

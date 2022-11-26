@@ -7,50 +7,86 @@ using kentaasvang.Rssh.Repositories;
 
 public class AddHandlerTest
 {
-    [Theory]
-    [InlineData(true)]
-    [InlineData(false)]
-    public void AddHandlerInsertNewConnection_ShouldCallRepoInsert(bool succeeded)
-    {
-      // Arrange
-      var fakeOutput = new FakeOutput();
-      var newConnectionName = "testName";
+  private readonly Mock<IConnectionDetailRepository> _connectionDetailRepoMock;
+  private readonly Mock<IInputProvider> _inputProvider;
+  private readonly IAddHandler _sut;
+  public AddHandlerTest()
+  {
+    _connectionDetailRepoMock = new Mock<IConnectionDetailRepository>();
+    _inputProvider = new Mock<IInputProvider>(); 
+    _sut = new AddHandler(_connectionDetailRepoMock.Object, _inputProvider.Object);
+  }
 
-      var connectionDetailRepoMock = new Mock<IConnectionDetailRepository>();
-      var inputProvider = new Mock<IInputProvider>(); 
+  [Fact]
+  public void AddCommand_ShouldCallRepoInsert()
+  {
+    // Arrange
+    // var fakeOutput = new FakeOutput();
+    var newConnectionName = "testName";
 
-      inputProvider.Setup(provider => provider.GetInput()).Returns("randomString");
+    // _inputProvider.Setup(provider => provider.GetInput()).Returns("randomString");
 
-      // TODO: use Faker
-      var returnedConnectionDetailEnitty = new ConnectionDetailEntity
+    // TODO: use Faker
+    _connectionDetailRepoMock
+      .Setup(repo => repo.Insert(It.IsAny<ConnectionDetailEntity>()))
+      .Returns(new RepositoryResult<ConnectionDetailEntity>());
+
+    // Act
+    _sut.InsertNewConnection(newConnectionName);
+
+    // Assert
+    _connectionDetailRepoMock.Verify(repo => repo.Insert(It.IsAny<ConnectionDetailEntity>()), Times.Once);
+  }
+
+  [Fact]
+  public void AddCommand_WhenAllOk_ShouldOutputSuccessMessage()
+  {
+    // Arrange
+    var fakeOutput = new FakeOutput();
+    var newConnectionName = "testName";
+
+    _connectionDetailRepoMock
+      .Setup(repo => repo.Insert(It.IsAny<ConnectionDetailEntity>()))
+      .Returns(new RepositoryResult<ConnectionDetailEntity>()
       {
-        Name = newConnectionName,
-        Ip = "0.0.0.0",
-        Username = "username",
-        Password = "password"
-      };
+        Succeeded = true,
+        Value = new ConnectionDetailEntity()
+        {
+          Name = newConnectionName,
+          Username = "username",
+          Ip = "0.0.0.0",
+          Password = "password"
+        }
+      });
 
-      connectionDetailRepoMock
-        .Setup(repo => repo.Insert(It.IsAny<ConnectionDetailEntity>()))
-        .Returns(
-          new RepositoryResult<ConnectionDetailEntity>() 
-          { 
-            Succeeded = succeeded, 
-            Value = returnedConnectionDetailEnitty
-          });
+    // Act
+    _sut.InsertNewConnection(newConnectionName);
 
-      var handler = new AddHandler(connectionDetailRepoMock.Object, inputProvider.Object);
+    // Assert
+    Assert.Contains($"Successfully inserted new connection: {newConnectionName}", FakeOutput.Output.ToString());
+  }
 
-      // Act
-      handler.InsertNewConnection(newConnectionName);
+  [Fact]
+  public void AddCommand_WhenNotOk_ShouldOutputErrorMessage()
+  {
+    // Arrange
+    var fakeOutput = new FakeOutput();
+    var newConnectionName = "testName";
+    var errorMessage = "my error message";
 
-      // Assert
-      connectionDetailRepoMock
-        .Verify(repo => repo.Insert(It.IsAny<ConnectionDetailEntity>()), Times.Once);
+    _connectionDetailRepoMock
+      .Setup(repo => repo.Insert(It.IsAny<ConnectionDetailEntity>()))
+      .Returns(new RepositoryResult<ConnectionDetailEntity>()
+      {
+        Succeeded = false,
+        ErrorMessage = errorMessage
+      });
 
-      if (succeeded)
-        Assert.Contains($"Successfully inserted new connection: {newConnectionName}", FakeOutput.Output.ToString());
-      else
-        Assert.Contains("Something wen't wrong", FakeOutput.Output.ToString());
-    }
+    // Act
+    _sut.InsertNewConnection(newConnectionName);
+
+    // Assert
+    Assert.Contains($"Something wen't wrong: ", FakeOutput.Output.ToString());
+    Assert.Contains(errorMessage, FakeOutput.Output.ToString());
+  }
 }
