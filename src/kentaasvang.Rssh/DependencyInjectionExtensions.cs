@@ -13,6 +13,7 @@ internal static class DependencyInjectionExtensions
   {
     services.AddTransient<IAddHandler, AddHandler>();
     services.AddTransient<IListHandler, ListHandler>();
+    services.AddTransient<IRemoveHandler, RemoveHandler>();
   }
 
   internal static void AddRepos(this IServiceCollection services)
