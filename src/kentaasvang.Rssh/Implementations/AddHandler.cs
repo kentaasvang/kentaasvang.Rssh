@@ -14,25 +14,25 @@ public class AddHandler : IAddHandler
     {
         _dbContext = dbContext;
         _inputProvider = inputProvider;
-  }
+    }
 
-  public void Handler(string name)
+    public void Handler(string name)
     {
-        Console.Write("Give ip: ");
+        Console.Write("Enter IP-address for connection: ");
         string ip = _inputProvider.GetInput(); 
         
-        Console.Write("Give username: ");
+        Console.Write("Enter username to use when connecting: ");
         string username = _inputProvider.GetInput(); 
         
-        Console.Write("Give password: ");
+        Console.Write("Enter password: ");
         string password = _inputProvider.GetInput(); 
 
         ConnectionDetail connectionDetails = new() 
         {
-           Name = name,
-           Ip = ip,
-           Username = username,
-           Password = password 
+            Name = name,
+            Ip = ip,
+            Username = username,
+            Password = password 
         };
 
         _dbContext.Add(connectionDetails);
