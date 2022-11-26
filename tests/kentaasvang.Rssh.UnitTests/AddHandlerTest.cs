@@ -8,27 +8,54 @@ using kentaasvang.Rssh.Repositories;
 
 public class AddHandlerTest
 {
-    [Fact]
-    public void AddHandlerInsertNewConnection_ShouldCallRepoInsert()
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void AddHandlerInsertNewConnection_ShouldCallRepoInsert(bool succeeded)
     {
       // Arrange
+      var newConnectionName = "testName";
+      var stringWriter = new StringWriter();
+      Console.SetOut(stringWriter);
+
       var connectionDetailRepoMock = new Mock<IConnectionDetailRepository>();
       var inputProvider = new Mock<IInputProvider>(); 
 
       inputProvider.Setup(provider => provider.GetInput()).Returns("randomString");
+
+      // TODO: use Faker
+      var returnedConnectionDetailEnitty = new ConnectionDetailEntity
+      {
+        Name = newConnectionName,
+        Ip = "0.0.0.0",
+        Username = "username",
+        Password = "password"
+      };
+
       connectionDetailRepoMock
         .Setup(repo => repo.Insert(It.IsAny<ConnectionDetailEntity>()))
-        .Returns(new RepositoryResult<ConnectionDetailEntity>());
+        .Returns(
+          new RepositoryResult<ConnectionDetailEntity>() 
+          { 
+            Succeeded = succeeded, 
+            Value = returnedConnectionDetailEnitty
+          });
 
       var handler = new AddHandler(connectionDetailRepoMock.Object, inputProvider.Object);
-      var name = "testName";
 
       // Act
-      handler.InsertNewConnection(name);
+      handler.InsertNewConnection(newConnectionName);
 
       // Assert
       // TODO: assert dbContext is called with correct data
       // TODO: use Faker to provide dynamic data for inputProvider
-      connectionDetailRepoMock.Verify(repo => repo.Insert(It.IsAny<ConnectionDetailEntity>()), Times.Once);
+      connectionDetailRepoMock
+        .Verify(repo => repo.Insert(It.IsAny<ConnectionDetailEntity>()), Times.Once);
+
+      if (succeeded)
+        Assert.Contains($"Successfully inserted new connection: {newConnectionName}", stringWriter.ToString());
+      else
+        Assert.Contains("Something wen't wrong", stringWriter.ToString());
+
     }
 }

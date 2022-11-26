@@ -37,5 +37,10 @@ public class AddHandler : IAddHandler
         };
 
         var result = _repo.Insert(connectionDetails);
+
+        if (result.Succeeded)
+            Console.WriteLine($"Successfully inserted new connection: {result?.Value?.Name}");
+        else
+            Console.WriteLine($"Something wen't wrong: {result?.ErrorMessage}");
     } 
 }
