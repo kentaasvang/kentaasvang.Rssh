@@ -4,19 +4,20 @@ using System;
 using kentaasvang.Rssh.Interfaces;
 using kentaasvang.Rssh.Data;
 using kentaasvang.Rssh.Models;
+using kentaasvang.Rssh.Repositories;
 
 public class AddHandler : IAddHandler
 {
-    private DatabaseContext _dbContext;
-    private IInputProvider _inputProvider;
+  private readonly IConnectionDetailRepository _repo;
+  private readonly IInputProvider _inputProvider;
 
-    public AddHandler(DatabaseContext dbContext, IInputProvider inputProvider)
+    public AddHandler(IConnectionDetailRepository repo, IInputProvider inputProvider)
     {
-        _dbContext = dbContext;
+        _repo = repo;
         _inputProvider = inputProvider;
     }
 
-    public void Handler(string name)
+    public void InsertNewConnection(string name)
     {
         Console.Write("Enter IP-address for connection: ");
         string ip = _inputProvider.GetInput(); 
@@ -27,7 +28,7 @@ public class AddHandler : IAddHandler
         Console.Write("Enter password: ");
         string password = _inputProvider.GetInput(); 
 
-        ConnectionDetail connectionDetails = new() 
+        ConnectionDetailEntity connectionDetails = new() 
         {
             Name = name,
             Ip = ip,
@@ -35,7 +36,6 @@ public class AddHandler : IAddHandler
             Password = password 
         };
 
-        _dbContext.Add(connectionDetails);
-        _dbContext.SaveChanges();
+        var result = _repo.Insert(connectionDetails);
     } 
 }

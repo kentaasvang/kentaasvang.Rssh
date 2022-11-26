@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace kentaasvang.Rssh.Models;
 
 [Table("connection_detail")]
-public class ConnectionDetail
+public class ConnectionDetailEntity
 {
     [Column("id")]
     public Guid Id { get; set; } = Guid.NewGuid();

@@ -9,7 +9,7 @@ namespace kentaasvang.Rssh.Commands;
 
 internal class RemoveCommand : ICommandInstaller
 {
-    private readonly DatabaseContext _database = new();
+    private readonly RsshDbContext _database = new();
     
     // remove groups or single server
     // rssh remove <group> -> removes group totally with all servers belonging to that group

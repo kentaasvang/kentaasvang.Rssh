@@ -9,7 +9,7 @@ using kentaasvang.Rssh.Data;
 
 namespace kentaasvang.Rssh.Migrations
 {
-    [DbContext(typeof(DatabaseContext))]
+    [DbContext(typeof(RsshDbContext))]
     partial class DatabaseContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

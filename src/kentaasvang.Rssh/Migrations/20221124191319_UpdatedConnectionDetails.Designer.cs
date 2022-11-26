@@ -10,7 +10,7 @@ using kentaasvang.Rssh.Data;
 
 namespace kentaasvang.Rssh.Migrations
 {
-    [DbContext(typeof(DatabaseContext))]
+    [DbContext(typeof(RsshDbContext))]
     [Migration("20221124191319_UpdatedConnectionDetails")]
     partial class UpdatedConnectionDetails
     {

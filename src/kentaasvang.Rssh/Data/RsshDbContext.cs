@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace kentaasvang.Rssh.Data;
 
-public class DatabaseContext : DbContext
+public class RsshDbContext : DbContext
 {
     private string DbPath { get; set; }
-    internal DbSet<ConnectionDetail> ConnectionDetails => Set<ConnectionDetail>();
+    internal DbSet<ConnectionDetailEntity> ConnectionDetails => Set<ConnectionDetailEntity>();
 
-    public DatabaseContext()
+    public RsshDbContext()
     {
 #if DEBUG
         DbPath = Path.Join(Environment.CurrentDirectory, "test_db.db");

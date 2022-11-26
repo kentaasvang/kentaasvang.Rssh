@@ -4,26 +4,31 @@ using kentaasvang.Rssh.Data;
 using kentaasvang.Rssh.Implementations;
 using kentaasvang.Rssh.Interfaces;
 using kentaasvang.Rssh.Models;
+using kentaasvang.Rssh.Repositories;
 
 public class AddHandlerTest
 {
     [Fact]
-    public void WhenExecuted_ShouldCallDbContextSaveWithConnectionDetail()
+    public void AddHandlerInsertNewConnection_ShouldCallRepoInsert()
     {
       // Arrange
-      var dbContextMock = new Mock<DatabaseContext>();
+      var connectionDetailRepoMock = new Mock<IConnectionDetailRepository>();
       var inputProvider = new Mock<IInputProvider>(); 
 
       inputProvider.Setup(provider => provider.GetInput()).Returns("randomString");
+      connectionDetailRepoMock
+        .Setup(repo => repo.Insert(It.IsAny<ConnectionDetailEntity>()))
+        .Returns(new RepositoryResult<ConnectionDetailEntity>());
 
-      var handler = new AddHandler(dbContextMock.Object, inputProvider.Object);
+      var handler = new AddHandler(connectionDetailRepoMock.Object, inputProvider.Object);
       var name = "testName";
 
       // Act
-      handler.Handler(name);
+      handler.InsertNewConnection(name);
 
       // Assert
-      dbContextMock.Verify(db => db.Add(It.IsAny<ConnectionDetail>()), Times.Once);
-      dbContextMock.Verify(db => db.SaveChanges(), Times.Once);
+      // TODO: assert dbContext is called with correct data
+      // TODO: use Faker to provide dynamic data for inputProvider
+      connectionDetailRepoMock.Verify(repo => repo.Insert(It.IsAny<ConnectionDetailEntity>()), Times.Once);
     }
 }

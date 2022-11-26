@@ -20,11 +20,7 @@ public class AddCommandWrapper : ICommandWrapper
         
         Argument name = new Argument<string>("name", "name of the connection");
         command.AddArgument(name);
-
-        // var inputProvider = new InputProvider();
-        // var handler = new AddHandler(new DatabaseContext(), inputProvider);
-
-        command.SetHandler<string>(_handler.Handler, name);
+        command.SetHandler<string>(_handler.InsertNewConnection, name);
 
         return command;
     }

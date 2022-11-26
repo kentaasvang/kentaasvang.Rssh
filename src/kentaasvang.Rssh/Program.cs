@@ -16,7 +16,8 @@ internal class Program
         var serviceProvider = services
             .AddTransient<IInputProvider, InputProvider>()
             .AddTransient<IAddHandler, AddHandler>()
-            .AddDbContext<DatabaseContext>()
+            .AddTransient<IListHandler, ListHandler>()
+            .AddDbContext<RsshDbContext>()
             .AddTransient<AddCommandWrapper>()
             .AddTransient<ListCommandWrapper>()
             .AddTransient<Rssh>()
