@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.IO;
 using kentaasvang.Rssh.Interfaces.Handlers;
 using kentaasvang.Rssh.Repositories;
 
@@ -14,13 +15,21 @@ public class ConnectionHandler : IConnectionHandler
     _repo = repo;
   }
 
-  // public void Connect(string username, string password)
-  // {
-  //   Console.WriteLine("heoooooo");
-  // }
-
   public void Connect(string username)
   {
-    Console.WriteLine("heoooooo");
+    string returnvalue = string.Empty;
+
+    var psi = new ProcessStartInfo();
+    psi.FileName = "/usr/bin/ssh";
+    psi.Arguments = "root@asvang.no";
+
+    psi.RedirectStandardOutput = false;
+    psi.RedirectStandardError = false;
+    psi.RedirectStandardInput = false;
+
+    psi.UseShellExecute = true;
+    psi.CreateNoWindow = true;
+
+    Process.Start(psi)?.WaitForExit();
   }
 }

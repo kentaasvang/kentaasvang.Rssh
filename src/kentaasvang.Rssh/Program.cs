@@ -25,7 +25,6 @@ internal class Program
 
         var serviceProvider = services.BuildServiceProvider(options);
 
-#warning service should not be resolved from root provider
         var app = serviceProvider.GetRequiredService<Rssh>();
 
         await app.Run(args);
