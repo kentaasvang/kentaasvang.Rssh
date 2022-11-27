@@ -14,6 +14,7 @@ internal static class DependencyInjectionExtensions
     services.AddTransient<IAddHandler, AddHandler>();
     services.AddTransient<IListHandler, ListHandler>();
     services.AddTransient<IRemoveHandler, RemoveHandler>();
+    services.AddTransient<IConnectionHandler, ConnectionHandler>();
   }
 
   internal static void AddRepos(this IServiceCollection services)
@@ -31,5 +32,6 @@ internal static class DependencyInjectionExtensions
     services.AddTransient<AddCommandWrapper>();
     services.AddTransient<ListCommandWrapper>();
     services.AddTransient<RemoveCommandWrapper>();
+    services.AddTransient<ConnectCommandWrapper>();
   }
 }

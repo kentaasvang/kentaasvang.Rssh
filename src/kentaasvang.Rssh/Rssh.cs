@@ -12,7 +12,8 @@ public class Rssh
   public Rssh(
     AddCommandWrapper addCommandWrapper, 
     ListCommandWrapper listCommandWrapper,
-    RemoveCommandWrapper removeCommand
+    RemoveCommandWrapper removeCommandWrapper,
+    ConnectCommandWrapper connectCommandWrapper
     )
   {
     _rootCommand = new() 
@@ -22,7 +23,8 @@ public class Rssh
 
     AddCommand(addCommandWrapper);
     AddCommand(listCommandWrapper);
-    AddCommand(removeCommand);
+    AddCommand(removeCommandWrapper);
+    AddCommand(connectCommandWrapper);
   }
 
   public async Task Run(string[] args)

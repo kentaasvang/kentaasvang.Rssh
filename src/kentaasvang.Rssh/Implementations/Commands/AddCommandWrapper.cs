@@ -19,8 +19,9 @@ public class AddCommandWrapper : ICommandWrapper
         command.AddAlias("a");
         command.Description = "save new connection";
         
-        Argument name = new Argument<string>("name", "name of the connection");
+        Argument name = new Argument<string>(nameof(name), "name of the connection");
         command.AddArgument(name);
+
         command.SetHandler<string>(_handler.InsertNewConnection, name);
 
         return command;
