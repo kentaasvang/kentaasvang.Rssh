@@ -1,23 +1,59 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using kentaasvang.Rssh.Data;
 using kentaasvang.Rssh.Entities;
 
 namespace kentaasvang.Rssh.Repositories;
 
 public class ConnectionDetailRepository : IConnectionDetailRepository
 {
-  public RepositoryResult<ConnectionDetailEntity> Delete(string name)
+  private readonly RsshDbContext _dbContext;
+
+  public ConnectionDetailRepository(RsshDbContext dbContext)
   {
-    throw new NotImplementedException();
+    _dbContext = dbContext; 
   }
 
-  public RepositoryResult<List<ConnectionDetailEntity>> GetAll()
+  public Result<string> Delete(string name)
   {
-    throw new NotImplementedException();
+    var entity = _dbContext.ConnectionDetails.Where(entity => entity.Name == name).FirstOrDefault();
+    if (entity is null)
+      return new Result<string>
+      {
+        Succeeded = false,
+        ErrorMessage = $"Connection with username: '{name}' was not found"
+      };
+
+    _dbContext.ConnectionDetails.Remove(entity);
+    _dbContext.SaveChanges();
+
+    return new Result<string>
+    {
+      Succeeded = true,
+    };
   }
 
-  public RepositoryResult<ConnectionDetailEntity> Insert(ConnectionDetailEntity entity)
+  public Result<List<string>> GetAllUserNames()
   {
-    throw new NotImplementedException();
+    var entities = _dbContext.ConnectionDetails.Select(cd => cd.Name).ToList();
+
+    return new Result<List<string>>
+    {
+      Succeeded = true,
+      Value = entities
+    };
+  }
+
+  public Result<string> Insert(ConnectionDetailEntity entity)
+  {
+    var entry = _dbContext.ConnectionDetails.Add(entity);
+    _dbContext.SaveChanges();
+
+    return new Result<string>
+    {
+      Succeeded = true,
+      Value = entry.Entity.Name
+    };
   }
 }

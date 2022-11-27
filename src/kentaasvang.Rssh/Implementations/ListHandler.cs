@@ -14,7 +14,7 @@ public class ListHandler : IListHandler
 
     public void ListAllConnections()
     {
-        var result = _repo.GetAll();
+        var result = _repo.GetAllUserNames();
 
         if (result.Value is null)
             Console.WriteLine("Your connection store is empy.");

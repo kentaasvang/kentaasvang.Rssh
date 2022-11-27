@@ -21,14 +21,14 @@ public class ListHandlerTest
   {
     // Arrange
     _repoMock
-      .Setup(r => r.GetAll())
+      .Setup(r => r.GetAllUserNames())
       .Returns(new Result<List<ConnectionDetailEntity>>());
 
     // Act
     _sut.ListAllConnections();
 
     // Assert
-    _repoMock.Verify(repo => repo.GetAll(), Times.Once);
+    _repoMock.Verify(repo => repo.GetAllUserNames(), Times.Once);
 
   }
 
@@ -39,7 +39,7 @@ public class ListHandlerTest
     var fakeOutput = new FakeOutput();
     var returnList = BuildReturnList();
     _repoMock
-      .Setup(r => r.GetAll())
+      .Setup(r => r.GetAllUserNames())
       .Returns(new Result<List<ConnectionDetailEntity>>() { Succeeded = true, Value = returnList});
 
     // Act
