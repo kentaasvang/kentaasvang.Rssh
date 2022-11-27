@@ -1,8 +1,8 @@
 namespace kentaasvang.Rssh.UnitTests;
 
-using kentaasvang.Rssh.Implementations;
 using kentaasvang.Rssh.Repositories;
-using kentaasvang.Rssh.Interfaces;
+using kentaasvang.Rssh.Interfaces.Handlers;
+using kentaasvang.Rssh.Implementations.Handlers;
 
 public class ListHandlerTest
 {

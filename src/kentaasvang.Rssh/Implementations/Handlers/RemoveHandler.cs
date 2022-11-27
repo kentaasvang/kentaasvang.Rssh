@@ -1,8 +1,8 @@
 using System;
-using kentaasvang.Rssh.Interfaces;
+using kentaasvang.Rssh.Interfaces.Handlers;
 using kentaasvang.Rssh.Repositories;
 
-namespace kentaasvang.Rssh.Implementations;
+namespace kentaasvang.Rssh.Implementations.Handlers;
 
 public class RemoveHandler : IRemoveHandler
 {

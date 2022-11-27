@@ -1,7 +1,7 @@
 using System.CommandLine;
 using System.Threading.Tasks;
-using kentaasvang.Rssh.Commands;
-using kentaasvang.Rssh.Implementations;
+using kentaasvang.Rssh.Implementations.Commands;
+using kentaasvang.Rssh.Interfaces.Commands;
 
 namespace kentaasvang.Rssh;
 

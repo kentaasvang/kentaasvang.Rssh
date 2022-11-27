@@ -1,7 +1,8 @@
 using System;
 using System.CommandLine;
+using kentaasvang.Rssh.Interfaces.Commands;
 
-namespace kentaasvang.Rssh.Commands;
+namespace kentaasvang.Rssh.Implementations.Commands;
 
 internal class ConnectCommand : ICommandWrapper
 
@@ -10,7 +11,6 @@ internal class ConnectCommand : ICommandWrapper
     {
         Command command = new("connect");
 
-        // TODO extract configuration
         command.AddAlias("con");
         command.Description = "Connect to a server";
 

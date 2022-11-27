@@ -1,6 +1,5 @@
-using kentaasvang.Rssh.Entities;
-using kentaasvang.Rssh.Implementations;
-using kentaasvang.Rssh.Interfaces;
+using kentaasvang.Rssh.Implementations.Handlers;
+using kentaasvang.Rssh.Interfaces.Handlers;
 using kentaasvang.Rssh.Repositories;
 
 namespace kentaasvang.Rssh.UnitTests;

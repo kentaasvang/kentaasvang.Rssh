@@ -1,7 +1,8 @@
 using System.CommandLine;
-using kentaasvang.Rssh.Interfaces;
+using kentaasvang.Rssh.Interfaces.Commands;
+using kentaasvang.Rssh.Interfaces.Handlers;
 
-namespace kentaasvang.Rssh.Commands;
+namespace kentaasvang.Rssh.Implementations.Commands;
 
 public class AddCommandWrapper : ICommandWrapper
 {

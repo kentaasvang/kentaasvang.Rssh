@@ -1,7 +1,7 @@
-using kentaasvang.Rssh.Commands;
+using kentaasvang.Rssh.Implementations.Commands;
 using kentaasvang.Rssh.Data;
-using kentaasvang.Rssh.Implementations;
-using kentaasvang.Rssh.Interfaces;
+using kentaasvang.Rssh.Interfaces.Handlers;
+using kentaasvang.Rssh.Implementations.Handlers;
 using kentaasvang.Rssh.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 

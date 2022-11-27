@@ -1,4 +1,4 @@
-namespace kentaasvang.Rssh.Interfaces;
+namespace kentaasvang.Rssh.Interfaces.Handlers;
 
 public interface IRemoveHandler
 {

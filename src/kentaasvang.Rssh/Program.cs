@@ -4,8 +4,6 @@ using System.Threading.Tasks;
 using kentaasvang.Rssh.Implementations;
 using kentaasvang.Rssh.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
-using kentaasvang.Rssh.Data;
-using kentaasvang.Rssh.Commands;
 
 internal class Program
 {
