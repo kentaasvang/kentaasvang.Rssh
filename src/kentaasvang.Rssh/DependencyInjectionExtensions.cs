@@ -30,5 +30,6 @@ internal static class DependencyInjectionExtensions
   {
     services.AddTransient<AddCommandWrapper>();
     services.AddTransient<ListCommandWrapper>();
+    services.AddTransient<RemoveCommandWrapper>();
   }
 }

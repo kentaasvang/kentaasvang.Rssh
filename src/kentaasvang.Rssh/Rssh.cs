@@ -1,6 +1,7 @@
 using System.CommandLine;
 using System.Threading.Tasks;
 using kentaasvang.Rssh.Commands;
+using kentaasvang.Rssh.Implementations;
 
 namespace kentaasvang.Rssh;
 
@@ -8,7 +9,11 @@ public class Rssh
 {
   private RootCommand _rootCommand;
 
-  public Rssh(AddCommandWrapper addCommandWrapper, ListCommandWrapper listCommandWrapper)
+  public Rssh(
+    AddCommandWrapper addCommandWrapper, 
+    ListCommandWrapper listCommandWrapper,
+    RemoveCommandWrapper removeCommand
+    )
   {
     _rootCommand = new() 
     { 
@@ -17,6 +22,7 @@ public class Rssh
 
     AddCommand(addCommandWrapper);
     AddCommand(listCommandWrapper);
+    AddCommand(removeCommand);
   }
 
   public async Task Run(string[] args)

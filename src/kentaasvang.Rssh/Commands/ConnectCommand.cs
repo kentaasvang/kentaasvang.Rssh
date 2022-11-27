@@ -1,12 +1,12 @@
 using System;
 using System.CommandLine;
-using kentaasvang.Rssh.Interfaces;
 
 namespace kentaasvang.Rssh.Commands;
 
-internal class ConnectCommand : ICommandInstaller
+internal class ConnectCommand : ICommandWrapper
+
 {
-    public Command LoadCommand()
+    public Command UnWrap()
     {
         Command command = new("connect");
 
