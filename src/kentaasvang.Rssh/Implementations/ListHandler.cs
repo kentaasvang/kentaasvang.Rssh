@@ -19,6 +19,6 @@ public class ListHandler : IListHandler
         if (result.Value is null)
             Console.WriteLine("Your connection store is empy.");
         else
-            foreach (var connection in result.Value) Console.WriteLine(connection.Name); 
+            foreach (var connection in result.Value) Console.WriteLine(connection); 
     }
 }

@@ -1,7 +1,6 @@
 namespace kentaasvang.Rssh.UnitTests;
 
 using kentaasvang.Rssh.Implementations;
-using kentaasvang.Rssh.Entities;
 using kentaasvang.Rssh.Repositories;
 using kentaasvang.Rssh.Interfaces;
 
@@ -22,7 +21,7 @@ public class ListHandlerTest
     // Arrange
     _repoMock
       .Setup(r => r.GetAllUserNames())
-      .Returns(new Result<List<ConnectionDetailEntity>>());
+      .Returns(new Result<List<string>>());
 
     // Act
     _sut.ListAllConnections();
@@ -37,46 +36,28 @@ public class ListHandlerTest
   {
     // Arrange
     var fakeOutput = new FakeOutput();
-    var returnList = BuildReturnList();
+    var usernames = BuildReturnList();
     _repoMock
       .Setup(r => r.GetAllUserNames())
-      .Returns(new Result<List<ConnectionDetailEntity>>() { Succeeded = true, Value = returnList});
+      .Returns(new Result<List<string>>() { Succeeded = true, Value = usernames});
 
     // Act
     _sut.ListAllConnections();
 
     // Assert
-    foreach(var entity in returnList)
-      Assert.Contains(entity.Name, FakeOutput.Output.ToString());
+    foreach(var username in usernames)
+      Assert.Contains(username, FakeOutput.Output.ToString());
 
   }
 
-  private static List<ConnectionDetailEntity> BuildReturnList()
+  private static List<string> BuildReturnList()
   {
     // TODO: Faker
-    return new List<ConnectionDetailEntity>
+    return new List<string>
     {
-      new ConnectionDetailEntity()
-      {
-        Name = "name1",
-        Ip = "0.0.0.0",
-        Username = "username",
-        Password = "password"
-      },
-      new ConnectionDetailEntity()
-      {
-        Name = "name2",
-        Ip = "0.0.0.0",
-        Username = "username",
-        Password = "password"
-      },
-      new ConnectionDetailEntity()
-      {
-        Name = "name2",
-        Ip = "0.0.0.0",
-        Username = "username",
-        Password = "password"
-      },
+      "name1",
+      "name2",
+      "name3"
     };
   }
 }
