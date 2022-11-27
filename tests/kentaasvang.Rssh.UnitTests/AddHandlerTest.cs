@@ -29,7 +29,7 @@ public class AddHandlerTest
     // TODO: use Faker
     _connectionDetailRepoMock
       .Setup(repo => repo.Insert(It.IsAny<ConnectionDetailEntity>()))
-      .Returns(new RepositoryResult<ConnectionDetailEntity>());
+      .Returns(new Result<ConnectionDetailEntity>());
 
     // Act
     _sut.InsertNewConnection(newConnectionName);
@@ -47,7 +47,7 @@ public class AddHandlerTest
 
     _connectionDetailRepoMock
       .Setup(repo => repo.Insert(It.IsAny<ConnectionDetailEntity>()))
-      .Returns(new RepositoryResult<ConnectionDetailEntity>()
+      .Returns(new Result<ConnectionDetailEntity>()
       {
         Succeeded = true,
         Value = new ConnectionDetailEntity()
@@ -76,7 +76,7 @@ public class AddHandlerTest
 
     _connectionDetailRepoMock
       .Setup(repo => repo.Insert(It.IsAny<ConnectionDetailEntity>()))
-      .Returns(new RepositoryResult<ConnectionDetailEntity>()
+      .Returns(new Result<ConnectionDetailEntity>()
       {
         Succeeded = false,
         ErrorMessage = errorMessage

@@ -8,7 +8,7 @@ namespace kentaasvang.Rssh.Data;
 public class RsshDbContext : DbContext
 {
     private string DbPath { get; set; }
-    internal DbSet<ConnectionDetailEntity> ConnectionDetails => Set<ConnectionDetailEntity>();
+    public DbSet<ConnectionDetailEntity> ConnectionDetails => Set<ConnectionDetailEntity>();
 
     public RsshDbContext()
     {

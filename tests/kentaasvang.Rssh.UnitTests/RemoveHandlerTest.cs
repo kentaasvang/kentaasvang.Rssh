@@ -21,7 +21,7 @@ public class RemoveHandlerTest
   {
     // Arrange
     var connectionName = "somename";
-    _repoMock.Setup(r => r.Delete(It.IsAny<string>())).Returns(new RepositoryResult<ConnectionDetailEntity>());
+    _repoMock.Setup(r => r.Delete(It.IsAny<string>())).Returns(new Result<ConnectionDetailEntity>());
 
     // Act
     _sut.RemoveConnection(connectionName);
@@ -46,7 +46,7 @@ public class RemoveHandlerTest
 
     _repoMock
       .Setup(r => r.Delete(It.IsAny<string>()))
-      .Returns(new RepositoryResult<ConnectionDetailEntity>(){ Succeeded = true, Value = value});
+      .Returns(new Result<ConnectionDetailEntity>(){ Succeeded = true, Value = value});
 
     // Act
     _sut.RemoveConnection(connectionName);
@@ -71,7 +71,7 @@ public class RemoveHandlerTest
 
     _repoMock
       .Setup(r => r.Delete(It.IsAny<string>()))
-      .Returns(new RepositoryResult<ConnectionDetailEntity>(){ Succeeded = true, Value = value});
+      .Returns(new Result<ConnectionDetailEntity>(){ Succeeded = true, Value = value});
 
     // Act
     _sut.RemoveConnection(connectionName);

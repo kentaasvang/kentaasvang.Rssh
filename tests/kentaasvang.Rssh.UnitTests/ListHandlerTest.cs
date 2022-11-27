@@ -22,7 +22,7 @@ public class ListHandlerTest
     // Arrange
     _repoMock
       .Setup(r => r.GetAll())
-      .Returns(new RepositoryResult<List<ConnectionDetailEntity>>());
+      .Returns(new Result<List<ConnectionDetailEntity>>());
 
     // Act
     _sut.ListAllConnections();
@@ -40,7 +40,7 @@ public class ListHandlerTest
     var returnList = BuildReturnList();
     _repoMock
       .Setup(r => r.GetAll())
-      .Returns(new RepositoryResult<List<ConnectionDetailEntity>>() { Succeeded = true, Value = returnList});
+      .Returns(new Result<List<ConnectionDetailEntity>>() { Succeeded = true, Value = returnList});
 
     // Act
     _sut.ListAllConnections();
