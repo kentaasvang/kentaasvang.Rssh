@@ -19,14 +19,15 @@ internal class Program
         services.AddCommands();
 
         services.AddTransient<IInputProvider, InputProvider>();
-        services.AddTransient<Rssh>();
+        services.AddScoped<Rssh>();
 
         var options = new ServiceProviderOptions();
         options.ValidateOnBuild = true;
-        options.ValidateScopes = true;
+        // options.ValidateScopes = true;
 
         var serviceProvider = services.BuildServiceProvider(options);
 
+#warning service should not be resolved from root provider
         var app = serviceProvider.GetRequiredService<Rssh>();
 
         await app.Run(args);
