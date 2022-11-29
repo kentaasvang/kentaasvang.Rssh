@@ -7,7 +7,7 @@ namespace kentaasvang.Rssh;
 
 public class Rssh
 {
-  private RootCommand _rootCommand;
+  private readonly RootCommand _rootCommand;
 
   public Rssh(
     AddCommandWrapper addCommandWrapper, 
@@ -16,7 +16,7 @@ public class Rssh
     ConnectCommandWrapper connectCommandWrapper
     )
   {
-    _rootCommand = new() 
+    _rootCommand = new RootCommand
     { 
       Description = "store ssh credentials for clients", Name = "rssh" 
     };

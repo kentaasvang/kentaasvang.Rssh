@@ -1,11 +1,11 @@
 ﻿namespace kentaasvang.Rssh;
 
 using System.Threading.Tasks;
-using kentaasvang.Rssh.Implementations;
-using kentaasvang.Rssh.Interfaces;
+using Implementations;
+using Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
-internal class Program
+internal static class Program
 {
     internal static async Task Main(string[] args)
     {
@@ -19,10 +19,12 @@ internal class Program
         services.AddTransient<IInputProvider, InputProvider>();
         services.AddScoped<Rssh>();
 
-        var options = new ServiceProviderOptions();
-        options.ValidateOnBuild = true;
-        // options.ValidateScopes = true;
-
+        var options = new ServiceProviderOptions
+        {
+            ValidateOnBuild = true,
+            // ValidateScopes = true
+        };
+        
         var serviceProvider = services.BuildServiceProvider(options);
 
         var app = serviceProvider.GetRequiredService<Rssh>();
