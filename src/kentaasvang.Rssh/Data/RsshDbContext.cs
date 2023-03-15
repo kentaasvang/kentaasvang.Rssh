@@ -1,21 +1,24 @@
 using System;
 using System.IO;
-using kentaasvang.Rssh.Models;
+using kentaasvang.Rssh.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace kentaasvang.Rssh.Data;
 
-internal class DatabaseContext : DbContext
+public class RsshDbContext : DbContext
 {
-    internal DbSet<ConnectionDetail> ConnectionDetails { get; set; } = null!;
-    internal DbSet<Group> Groups { get; set; } = null!;
     private string DbPath { get; set; }
+    public DbSet<ConnectionDetailEntity> ConnectionDetails => Set<ConnectionDetailEntity>();
 
-    public DatabaseContext()
+    public RsshDbContext()
     {
+#if DEBUG
+        DbPath = Path.Join(Environment.CurrentDirectory, "test_db.db");
+#else
         var folder = Environment.SpecialFolder.LocalApplicationData;
         string path = Environment.GetFolderPath(folder);
-        DbPath = Path.Join(path, "blogging.db");    
+        DbPath = Path.Join(path, "rssh.db");    
+#endif
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)

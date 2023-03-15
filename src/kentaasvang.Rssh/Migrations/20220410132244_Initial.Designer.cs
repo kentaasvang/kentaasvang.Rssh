@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace kentaasvang.Rssh.Migrations
 {
-    [DbContext(typeof(DatabaseContext))]
+    [DbContext(typeof(RsshDbContext))]
     [Migration("20220410132244_Initial")]
     partial class Initial
     {

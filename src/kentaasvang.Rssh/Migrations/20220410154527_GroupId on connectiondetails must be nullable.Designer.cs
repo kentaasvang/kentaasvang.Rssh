@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace kentaasvang.Rssh.Migrations
 {
-    [DbContext(typeof(DatabaseContext))]
+    [DbContext(typeof(RsshDbContext))]
     [Migration("20220410154527_GroupId on connectiondetails must be nullable")]
     partial class GroupIdonconnectiondetailsmustbenullable
     {
