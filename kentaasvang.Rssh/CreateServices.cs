@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace kentaasvang.Rssh;
 
-internal static class DependencyInjectionExtensions
+internal static class CreateServices
 {
   internal static void AddHandlers(this IServiceCollection services)
   {
