@@ -1,10 +1,10 @@
 namespace kentaasvang.Rssh.UnitTests;
 
-using kentaasvang.Rssh.Interfaces;
-using kentaasvang.Rssh.Entities;
-using kentaasvang.Rssh.Repositories;
-using kentaasvang.Rssh.Interfaces.Handlers;
-using kentaasvang.Rssh.Implementations.Handlers;
+using Interfaces;
+using Entities;
+using Repositories;
+using Interfaces.Handlers;
+using Implementations.Handlers;
 
 public class AddHandlerTest
 {
