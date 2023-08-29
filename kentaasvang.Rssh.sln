@@ -13,6 +13,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kentaasvang.Rssh", "kentaas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kentaasvang.Rssh.UnitTests", "kentaasvang.Rssh.UnitTests\kentaasvang.Rssh.UnitTests.csproj", "{519D7BD4-516E-425D-A2FE-D9A699884BEF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{79F64296-E026-4FCB-BB43-7F5E4690FDD3}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{49B38614-F085-43FD-83D5-E5CEBE05EC0B}"
+	ProjectSection(SolutionItems) = preProject
+		build.sh = build.sh
+		install.sh = install.sh
+		run.sh = run.sh
+		uninstall.sh = uninstall.sh
+		update.sh = update.sh
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

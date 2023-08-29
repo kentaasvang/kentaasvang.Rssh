@@ -1,2 +1,2 @@
 #!/bin/bash
-dotnet build ./src/kentaasvang.Rssh/
+dotnet build ./kentaasvang.Rssh/
