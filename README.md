@@ -1,24 +1,28 @@
 # 🆕 Remember SSH - rssh
 
 ## ❓ What is My Project?
-Got sick and tired of looking up login credentials for a few dozen ubuntu servers so I created this CLI to get a common interface to all of them.
+A simple ssh-automation tool.
 
 ## ⚡ Doc's
 
 **Install**
-dotnet pack
-dotnet tool install Kent.Cli.Rssh --global --add-source bin/Debug
+
+> dotnet pack &&
+> dotnet tool install Kent.Cli.Rssh --global --add-source bin/Debug
 
 **Update**
-dotnet pack
-dotnet tool update Kent.Cli.Rssh --global --add-source bin/Debug
+
+> dotnet pack &&
+> dotnet tool update Kent.Cli.Rssh --global --add-source bin/Debug
 
 **Delete**
-dotnet tool uninstall Kent.Cli.Rssh --global
+
+> dotnet tool uninstall Kent.Cli.Rssh --global
 
 **Migrate and update database**
-dotnet ef migrations add <migration name>
-dotnet ef database update
+
+> dotnet ef migrations add <migration name> &&
+> dotnet ef database update
 
 
 ### 🔨 API
