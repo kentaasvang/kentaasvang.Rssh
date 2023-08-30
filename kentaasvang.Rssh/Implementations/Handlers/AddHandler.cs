@@ -1,12 +1,11 @@
 namespace kentaasvang.Rssh.Implementations.Handlers;
 
 using System;
-using kentaasvang.Rssh.Interfaces.Handlers;
-using kentaasvang.Rssh.Entities;
-using kentaasvang.Rssh.Repositories;
-using kentaasvang.Rssh.Interfaces;
+using Entities;
+using Repositories;
+using Interfaces;
 
-public class AddHandler : IAddHandler
+public class AddHandler 
 {
   private readonly IConnectionDetailRepository _repo;
   private readonly IInputProvider _inputProvider;
@@ -20,13 +19,13 @@ public class AddHandler : IAddHandler
   public void InsertNewConnection(string name)
   {
     Console.Write("Enter IP-address for connection: ");
-    string ip = _inputProvider.GetInput(); 
+    var ip = _inputProvider.GetInput(); 
 
     Console.Write("Enter username to use when connecting: ");
-    string username = _inputProvider.GetInput(); 
+    var username = _inputProvider.GetInput(); 
 
     Console.Write("Enter password: ");
-    string password = _inputProvider.GetInput(); 
+    var password = _inputProvider.GetInput(); 
 
     ConnectionDetailEntity connectionDetails = new() 
     {
@@ -38,9 +37,8 @@ public class AddHandler : IAddHandler
 
     var result = _repo.Insert(connectionDetails);
 
-    if (result.Succeeded)
-      Console.WriteLine($"Successfully inserted new connection: {result?.Value}");
-    else
-      Console.WriteLine($"Something wen't wrong: {result?.ErrorMessage}");
+    Console.WriteLine(result.Succeeded
+      ? $"Successfully inserted new connection: {result?.Value}"
+      : $"Something went wrong: {result?.ErrorMessage}");
   } 
 }

@@ -1,6 +1,5 @@
 using kentaasvang.Rssh.Implementations.Commands;
 using kentaasvang.Rssh.Data;
-using kentaasvang.Rssh.Interfaces.Handlers;
 using kentaasvang.Rssh.Implementations.Handlers;
 using kentaasvang.Rssh.Repositories;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,10 +10,10 @@ internal static class CreateServices
 {
   internal static void AddHandlers(this IServiceCollection services)
   {
-    services.AddTransient<IAddHandler, AddHandler>();
-    services.AddTransient<IListHandler, ListHandler>();
-    services.AddTransient<IRemoveHandler, RemoveHandler>();
-    services.AddTransient<IConnectionHandler, ConnectionHandler>();
+    services.AddTransient<AddHandler>();
+    services.AddTransient<ListHandler>();
+    services.AddTransient<RemoveHandler>();
+    services.AddTransient<ConnectionHandler>();
   }
 
   internal static void AddRepos(this IServiceCollection services)

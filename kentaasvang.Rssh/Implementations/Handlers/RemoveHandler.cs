@@ -1,10 +1,9 @@
 using System;
-using kentaasvang.Rssh.Interfaces.Handlers;
 using kentaasvang.Rssh.Repositories;
 
 namespace kentaasvang.Rssh.Implementations.Handlers;
 
-public class RemoveHandler : IRemoveHandler
+public class RemoveHandler 
 {
     private readonly IConnectionDetailRepository _repo;
 

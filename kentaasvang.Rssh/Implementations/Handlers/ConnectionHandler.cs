@@ -1,13 +1,10 @@
-using System;
 using System.Diagnostics;
-using System.IO;
 using System.Threading.Tasks;
-using kentaasvang.Rssh.Interfaces.Handlers;
 using kentaasvang.Rssh.Repositories;
 
 namespace kentaasvang.Rssh.Implementations.Handlers;
 
-public class ConnectionHandler : IConnectionHandler
+public class ConnectionHandler 
 {
   private readonly IConnectionDetailRepository _repo;
 

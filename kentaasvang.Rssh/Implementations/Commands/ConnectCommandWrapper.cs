@@ -1,6 +1,6 @@
 using System.CommandLine;
+using kentaasvang.Rssh.Implementations.Handlers;
 using kentaasvang.Rssh.Interfaces.Commands;
-using kentaasvang.Rssh.Interfaces.Handlers;
 using kentaasvang.Rssh.Repositories;
 
 namespace kentaasvang.Rssh.Implementations.Commands;
@@ -8,9 +8,9 @@ namespace kentaasvang.Rssh.Implementations.Commands;
 public class ConnectCommandWrapper : ICommandWrapper
 {
   private readonly IConnectionDetailRepository _repo;
-  private readonly IConnectionHandler _handler;
+  private readonly ConnectionHandler _handler;
 
-  public ConnectCommandWrapper(IConnectionDetailRepository repo, IConnectionHandler handler)
+  public ConnectCommandWrapper(IConnectionDetailRepository repo, ConnectionHandler handler)
   {
     _repo = repo;
     _handler = handler;

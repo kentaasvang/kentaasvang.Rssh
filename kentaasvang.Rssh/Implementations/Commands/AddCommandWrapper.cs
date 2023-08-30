@@ -1,14 +1,14 @@
 using System.CommandLine;
+using kentaasvang.Rssh.Implementations.Handlers;
 using kentaasvang.Rssh.Interfaces.Commands;
-using kentaasvang.Rssh.Interfaces.Handlers;
 
 namespace kentaasvang.Rssh.Implementations.Commands;
 
 public class AddCommandWrapper : ICommandWrapper
 {
-    private IAddHandler _handler;
+    private readonly AddHandler _handler;
 
-    public AddCommandWrapper(IAddHandler handler)
+    public AddCommandWrapper(AddHandler handler)
     {
        _handler = handler; 
     }

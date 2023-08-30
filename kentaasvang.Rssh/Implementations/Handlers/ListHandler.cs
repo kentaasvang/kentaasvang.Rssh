@@ -1,10 +1,9 @@
 using System;
-using kentaasvang.Rssh.Interfaces.Handlers;
 using kentaasvang.Rssh.Repositories;
 
 namespace kentaasvang.Rssh.Implementations.Handlers;
 
-public class ListHandler : IListHandler
+public class ListHandler 
 {
     private readonly IConnectionDetailRepository _repo;
     public ListHandler(IConnectionDetailRepository repo)
@@ -17,7 +16,7 @@ public class ListHandler : IListHandler
         var result = _repo.GetAllUserNames();
 
         if (result.Value is null)
-            Console.WriteLine("Your connection store is empy.");
+            Console.WriteLine("Your connection store is empty.");
         else
             foreach (var connection in result.Value) Console.WriteLine(connection); 
     }
