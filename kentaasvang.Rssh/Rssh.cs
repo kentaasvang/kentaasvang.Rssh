@@ -1,7 +1,6 @@
 using System.CommandLine;
 using System.Threading.Tasks;
 using kentaasvang.Rssh.Implementations.Commands;
-using kentaasvang.Rssh.Interfaces.Commands;
 
 namespace kentaasvang.Rssh;
 
@@ -10,10 +9,10 @@ public class Rssh
   private readonly RootCommand _rootCommand;
 
   public Rssh(
-    AddCommandWrapper addCommandWrapper, 
-    ListCommandWrapper listCommandWrapper,
-    RemoveCommandWrapper removeCommandWrapper,
-    ConnectCommandWrapper connectCommandWrapper
+    AddCommand addCommand, 
+    ListCommand listCommand,
+    RemoveCommand removeCommand,
+    ConnectCommand connectCommand
     )
   {
     _rootCommand = new RootCommand
@@ -21,18 +20,14 @@ public class Rssh
       Description = "store ssh credentials for clients", Name = "rssh" 
     };
 
-    AddCommand(addCommandWrapper);
-    AddCommand(listCommandWrapper);
-    AddCommand(removeCommandWrapper);
-    AddCommand(connectCommandWrapper);
+    _rootCommand.Add(addCommand.Create());
+    _rootCommand.Add(listCommand.Create());
+    _rootCommand.Add(removeCommand.Create());
+    _rootCommand.Add(connectCommand.Create());
   }
 
   public async Task Run(string[] args)
   {
     await _rootCommand.InvokeAsync(args);
   }
-
-  private void AddCommand(ICommandWrapper commandWrapper)
-    => _rootCommand.Add(commandWrapper.UnWrap());
-
 }

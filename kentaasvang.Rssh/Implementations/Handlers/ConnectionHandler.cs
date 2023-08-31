@@ -6,9 +6,9 @@ namespace kentaasvang.Rssh.Implementations.Handlers;
 
 public class ConnectionHandler 
 {
-  private readonly IConnectionDetailRepository _repo;
+  private readonly ConnectionDetailRepository _repo;
 
-  public ConnectionHandler(IConnectionDetailRepository repo)
+  public ConnectionHandler(ConnectionDetailRepository repo)
   {
     _repo = repo;
   }

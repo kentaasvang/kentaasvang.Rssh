@@ -1,19 +1,18 @@
 using System.CommandLine;
 using kentaasvang.Rssh.Implementations.Handlers;
-using kentaasvang.Rssh.Interfaces.Commands;
 
 namespace kentaasvang.Rssh.Implementations.Commands;
 
-public class ListCommandWrapper : ICommandWrapper
+public class ListCommand 
 {
     private readonly ListHandler _handler;
 
-    public ListCommandWrapper(ListHandler handler)
+    public ListCommand(ListHandler handler)
     {
         _handler = handler;
     }
     
-    public Command UnWrap()
+    public Command Create()
     {
         Command command = new("list");
         command.AddAlias("l");

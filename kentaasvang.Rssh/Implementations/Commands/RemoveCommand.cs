@@ -1,19 +1,18 @@
 using System.CommandLine;
 using kentaasvang.Rssh.Implementations.Handlers;
-using kentaasvang.Rssh.Interfaces.Commands;
 
 namespace kentaasvang.Rssh.Implementations.Commands;
 
-public class RemoveCommandWrapper : ICommandWrapper
+public class RemoveCommand 
 {
   private readonly RemoveHandler _handler;
 
-  public RemoveCommandWrapper(RemoveHandler handler)
+  public RemoveCommand(RemoveHandler handler)
   {
     _handler = handler;
   } 
 
-  public Command UnWrap()
+  public Command Create()
   {
     Command command = new("remove");
     command.AddAlias("r");

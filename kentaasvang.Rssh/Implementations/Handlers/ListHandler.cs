@@ -5,8 +5,8 @@ namespace kentaasvang.Rssh.Implementations.Handlers;
 
 public class ListHandler 
 {
-    private readonly IConnectionDetailRepository _repo;
-    public ListHandler(IConnectionDetailRepository repo)
+    private readonly ConnectionDetailRepository _repo;
+    public ListHandler(ConnectionDetailRepository repo)
     {
         _repo = repo;
     }

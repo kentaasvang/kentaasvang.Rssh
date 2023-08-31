@@ -3,14 +3,13 @@ namespace kentaasvang.Rssh.Implementations.Handlers;
 using System;
 using Entities;
 using Repositories;
-using Interfaces;
 
 public class AddHandler 
 {
-  private readonly IConnectionDetailRepository _repo;
-  private readonly IInputProvider _inputProvider;
+  private readonly ConnectionDetailRepository _repo;
+  private readonly InputProvider _inputProvider;
 
-  public AddHandler(IConnectionDetailRepository repo, IInputProvider inputProvider)
+  public AddHandler(ConnectionDetailRepository repo, InputProvider inputProvider)
   {
     _repo = repo;
     _inputProvider = inputProvider;
@@ -38,7 +37,7 @@ public class AddHandler
     var result = _repo.Insert(connectionDetails);
 
     Console.WriteLine(result.Succeeded
-      ? $"Successfully inserted new connection: {result?.Value}"
-      : $"Something went wrong: {result?.ErrorMessage}");
+      ? $"Successfully inserted new connection: {result.Value}"
+      : $"Something went wrong: {result.ErrorMessage}");
   } 
 }

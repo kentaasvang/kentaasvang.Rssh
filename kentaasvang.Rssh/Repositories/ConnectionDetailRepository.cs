@@ -5,7 +5,7 @@ using kentaasvang.Rssh.Entities;
 
 namespace kentaasvang.Rssh.Repositories;
 
-public class ConnectionDetailRepository : IConnectionDetailRepository
+public class ConnectionDetailRepository
 {
   private readonly RsshDbContext _dbContext;
 
@@ -16,7 +16,7 @@ public class ConnectionDetailRepository : IConnectionDetailRepository
 
   public Result<string> Delete(string name)
   {
-    var entity = _dbContext.ConnectionDetails.Where(entity => entity.Name == name).FirstOrDefault();
+    var entity = _dbContext.ConnectionDetails.FirstOrDefault(entity => entity.Name == name);
     if (entity is null)
       return new Result<string>
       {

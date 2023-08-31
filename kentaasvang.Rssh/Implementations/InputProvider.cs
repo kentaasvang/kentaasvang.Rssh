@@ -1,9 +1,8 @@
 using System;
-using kentaasvang.Rssh.Interfaces;
 
 namespace kentaasvang.Rssh.Implementations;
 
-public class InputProvider : IInputProvider
+public class InputProvider
 {
   public string GetInput()
   {

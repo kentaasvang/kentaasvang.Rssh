@@ -18,7 +18,7 @@ internal static class CreateServices
 
   internal static void AddRepos(this IServiceCollection services)
   {
-    services.AddTransient<IConnectionDetailRepository, ConnectionDetailRepository>();
+    services.AddTransient<ConnectionDetailRepository>();
   }
 
   internal static void AddDatabase(this IServiceCollection services)
@@ -28,9 +28,9 @@ internal static class CreateServices
 
   internal static void AddCommands(this IServiceCollection services)
   {
-    services.AddTransient<AddCommandWrapper>();
-    services.AddTransient<ListCommandWrapper>();
-    services.AddTransient<RemoveCommandWrapper>();
-    services.AddTransient<ConnectCommandWrapper>();
+    services.AddTransient<AddCommand>();
+    services.AddTransient<ListCommand>();
+    services.AddTransient<RemoveCommand>();
+    services.AddTransient<ConnectCommand>();
   }
 }

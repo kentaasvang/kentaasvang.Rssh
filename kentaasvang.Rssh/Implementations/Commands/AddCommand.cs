@@ -1,19 +1,18 @@
 using System.CommandLine;
 using kentaasvang.Rssh.Implementations.Handlers;
-using kentaasvang.Rssh.Interfaces.Commands;
 
 namespace kentaasvang.Rssh.Implementations.Commands;
 
-public class AddCommandWrapper : ICommandWrapper
+public class AddCommand 
 {
     private readonly AddHandler _handler;
 
-    public AddCommandWrapper(AddHandler handler)
+    public AddCommand(AddHandler handler)
     {
        _handler = handler; 
     }
 
-    public Command UnWrap()
+    public Command Create()
     {
         Command command = new("add");
         command.AddAlias("a");

@@ -5,9 +5,9 @@ namespace kentaasvang.Rssh.Implementations.Handlers;
 
 public class RemoveHandler 
 {
-    private readonly IConnectionDetailRepository _repo;
+    private readonly ConnectionDetailRepository _repo;
 
-    public RemoveHandler(IConnectionDetailRepository repo)
+    public RemoveHandler(ConnectionDetailRepository repo)
     {
        _repo = repo; 
     }
@@ -16,9 +16,8 @@ public class RemoveHandler
     {
         var result = _repo.Delete(name);
 
-        if (result.Succeeded)
-            Console.WriteLine($"Successfully removed connection: {name}");
-        else
-            Console.WriteLine($"Failed to remove connection: {name} with error: {result.ErrorMessage}");
+        Console.WriteLine(result.Succeeded
+            ? $"Successfully removed connection: {name}"
+            : $"Failed to remove connection: {name} with error: {result.ErrorMessage}");
     }
 }

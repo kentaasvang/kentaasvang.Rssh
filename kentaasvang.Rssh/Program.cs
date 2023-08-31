@@ -2,7 +2,6 @@
 
 using System.Threading.Tasks;
 using Implementations;
-using Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 internal static class Program
@@ -16,7 +15,7 @@ internal static class Program
         services.AddDatabase();
         services.AddCommands();
 
-        services.AddTransient<IInputProvider, InputProvider>();
+        services.AddTransient<InputProvider>();
         services.AddScoped<Rssh>();
 
         var options = new ServiceProviderOptions
